@@ -1,0 +1,40 @@
+{% extends 'posts/post_base.html' %}
+{% block prepost %}
+<div class="col-md-4">
+  {% if request.user.is_authenticated %}
+  <div class="card card-with-shadow">
+    <div class="content">
+      <h5 class='title'>Your Groups</h5>
+      <ul class='list-unstypled'>
+        {% for user_group in user_groups %}
+          <li class='group li_with-bullet'>
+            <a href="{% url 'groups:single' slug=user_group.slug %}">{{user_group.name}}</a>
+          </li>
+
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  {% endif %}
+  <div class="card card-with-shadow">
+    <div class="content">
+      <h5 class='title'>All Groups</h5>
+      <ul class='list-unstypled'>
+
+        {% for group in all_groups %}
+          <li class="group li-with-bullet"><a href="{% url 'groups:single' slug=group.slug %}">{{ group.name }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block post_content %}
+<div class="col-md-8">
+  <h1>Recommend Posts</h1>
+  {% for post in post_list %}
+    {% include 'posts/_post.html' %}
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>TravelNow</title>
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/master2.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/master.css' %}"> -->
+    <!-- Fonts -->
+   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <nav class='navbar mynav' role='navigation' id='navbar'>
+        <div class="container">
+          <a class='navbar-brand mynav' href="{% url 'home' %}">TravelNow</a>
+          <ul class='nav navbar-nav navbar-right'>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'about' %}" class="btn btn-simple">About</a></li>
+            <li><a href="{% url 'posts:create' %}" class="btn btn-simple">Post</a></li>
+            <li><a href="{% url 'groups:all' %}" class="btn btn-simple">Groups</a></li>
+            <li><a href="{% url 'groups:create' %}" class="btn btn-simple">Create Group</a></li>
+            <li><a href="{% url 'accounts:logout' %}" class="btn btn-simple">Log Out</a></li>
+            {% else %}
+            <li><a href="{% url 'about' %}" class="btn btn-simple">About</a></li>
+            <li><a href="{% url 'groups:all' %}" class="btn btn-simple">Groups</a></li>
+            <li><a href="{% url 'accounts:login' %}" class="btn btn-simple">Log In</a></li>
+            <li><a href="{% url 'accounts:signup' %}" class="btn btn-simple">Sign Up</a></li>
+            {% endif %}
+          </ul>
+        </div>
+        </nav>
+        <div class="container" id='content'>
+          <div class="jumbotron">
+            <h1>Welcome to TravelNow!</h1>
+            <p></p>
+            <p></p>
+            <p>This is a social networking site for people who love to travel, where you can find various travel groups, and you can find like-minded travel friends. You can find travel tips posted by others, and you can also share your own experiences and experiences with others.</p>
+            <p></p>
+            <p></p>
+            <div class="row">
+              <div class="col-xs-6 col-md-3">
+                <a href="#" class="thumbnail"><img src="https://www.tripnholidays.com/wp-content3_5/15-best-beaches-in-the-caribbean.jpg" alt="..."></a>
+              </div>
+              <div class="col-xs-6 col-md-3">
+                <a href="#" class="thumbnail"><img src="http://p1-q.mafengwo.net/s5/M00/D9/D0/wKgB3FE9U-GAO7Y-AAQ3c9XQES446.jpeg?imageView2%2F2%2Fw%2F2000%2Fh%2F600%2Fq%2F90" alt="..."></a>
+              </div>
+              <div class="col-xs-6 col-md-3">
+                <a href="#" class="thumbnail"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq9eu7JZQPdWzUkih09F1lUa9FrvOGoTwLkw&usqp=CAU" alt="..."></a>
+              </div>
+              <div class="col-xs-6 col-md-3">
+                <a href="#" class="thumbnail"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbjAFSqDG0ZpiWgy9mfqi1YsAE7LhY9EFgcQ&usqp=CAU" alt="..."></a>
+              </div>
+            </div>
+          </div>
+          <button type="button" name="button" onclick="location.href='{% url 'about' %}'">
+            <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Learn More
+        </button>
+
+        <button type="button" name="button" onclick="location.href='{% url 'groups:all' %}'">
+          <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Explore Groups
+      </button>
+
+      <button type="button" name="button" onclick="location.href='{% url 'accounts:signup' %}'">
+        <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Resigter Now
+    </button>
+    <button type="button" name="button" onclick="location.href='{% url 'accounts:login' %}'">
+      <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    Log In Now
+  </button>
+        </div>
+
+
+
+  </body>
+
+</html>
